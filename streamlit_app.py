@@ -2,10 +2,11 @@ import streamlit as st
 import requests
 from PIL import Image
 from io import BytesIO
+import time
 
 st.set_page_config(page_title="Floor Similarity Search", layout="wide")
 st.title("Floor Similarity Search App")
-
+start_time = time.time()
 uploaded_file = st.file_uploader("Upload a room image:", type=["jpg", "png", "jpeg"])
 
 if uploaded_file:
@@ -23,3 +24,7 @@ if uploaded_file:
             img = Image.open(img_path)
             with cols[i % 5]:
                 st.image(img, caption=f"{match['name']}\n Score: {match['score']}")
+        end_time = time.time()
+        print(f"Search completed in {end_time - start_time:.2f} seconds.")
+    else:
+        st.error("Error during search. Please try again.")

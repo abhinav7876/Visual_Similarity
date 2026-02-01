@@ -1,5 +1,5 @@
 # Floor Visual Similarity Search
-Designed and implemented a system that, for each query image, ranks all 20 product images from most similar to least similar, based on how closely the floor in the room matches the product image by focusing only on floor appearance (color, texture, pattern, material).
+Designed and implemented a system that, for each query image, ranks all 20 product images from most similar to least similar, based on how closely the floor in the room matches the product image by focusing on floor appearance (color, texture, pattern, material).
 
 ## Approach
 
@@ -66,6 +66,30 @@ Pinecone (cosine similarity)
 - Backend: FASTAPI (Python)
 - Frontend: streamlit
 - Database: Pinecone
+
+# Folder Structure
+
+```
+Visual_similarity/          
+│
+├─ data/                          
+│   ├─ query/                     
+│   └─ sku/                  
+├─ src/  
+|   |                         
+│   ├─ data_preprocessing/         
+│   │    ├─ embedding.py           
+│   │    └─ floor_segmentation.py
+│   │
+│   ├─ vector_store/                
+│   │    ├─ retrieval.py           
+│   │    └─ hybrid_reranking.py 
+│   │
+├─ main.py 
+├─ streamlit_app.py                
+├─ store_index.py                  
+└─ requirements.txt                
+```
 
 # Steps for Project Setup
 
