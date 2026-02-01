@@ -1,0 +1,13 @@
+python-dotenv
+pinecone
+torch
+opencv-python
+transformers
+langchain
+numpy
+langchain-pinecone
+pillow
+streamlit
+fastapi
+uvicorn
+python-multipart
