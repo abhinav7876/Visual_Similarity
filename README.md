@@ -5,7 +5,7 @@ Designed and implemented a system that, for each query image, ranks all 20 produ
 
 ### For Storing product images
 ```
-Generated CLIP embeddings for all product images using CLIP model and stored them in Pinecone Pinecone vector database along with metadata:
+Generated CLIP embeddings for all product images using CLIP model and stored them in Pinecone vector database along with metadata:
     - Image filename
     - Material type (e.g., wood, laminate)
     - Source (e.g., CLIPSeg)
@@ -14,18 +14,18 @@ Generated CLIP embeddings for all product images using CLIP model and stored the
 
 ### For Querying room image
 ```
-Step 1- Floor Segmentation – Extracted only the floor region from room images using CLIP segmentation model and crop the floor region based on CLIP segmentation in order to remove walls, furniture, and other irrelevant areas.
+Step 1- Floor Segmentation – Extracted only the floor region from room images using CLIP segmentation model( CLIP Seg) and cropped the floor region based on CLIP segmentation in order to remove walls, furniture, and other irrelevant areas.
 ```
 ```
-Step 2- Embedding – Generate CLIP embeddings for floor regions.
+Step 2- Embedding – Generated CLIP embeddings for extracted floor regions.
 
 ```
 ```
-Step 3- Semantic Retrieval – Queried Pinecone with the generated embedding to retrieve top-k candidate product images using cosine similarity.
+Step 3- Semantic Retrieval – Queried Pinecone DB with the generated embedding to retrieve top-k candidate product images from VectorDB using cosine similarity.
 
 ```
 ```
-Step 4- Hybrid Re-ranking – Reranked retrieved results using CLIP pairwise similarity between the query floor region and each top-k candidate product image to capture fine-grained visual differences such as texture and color.
+Step 4- Hybrid Re-ranking – Reranked retrieved results using CLIP pairwise similarity between the query floor region image and each top-k candidate product image to capture fine-grained visual differences such as texture and color.
 ```
 
 # Flowchart
@@ -38,11 +38,11 @@ Floor segmentation (CLIP Seg)
    ↓
 CLIP embedding
    ↓
-Pinecone
+Pinecone (cosine similarity)
    ↓
-CLIP pairwise similarity (re-rank)
+CLIP pairwise similarity (re-rank results)
    ↓
-Final ranking
+Final ranked result
 
 ```
 # Models & Techniques Used
@@ -64,7 +64,7 @@ Pinecone (cosine similarity)
 
 # Techstack Used:
 - Backend: FASTAPI (Python)
-- Frontend: streamlit
+- Frontend: Streamlit
 - Database: Pinecone
 
 # Folder Structure
@@ -152,8 +152,8 @@ UI will open in the browser.
 # Screenshots
 
 ![alt text](image-1.png)
-![alt text](image.png)
-![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
 
 
 # Limitations
