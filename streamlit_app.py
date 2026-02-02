@@ -27,4 +27,6 @@ if uploaded_file:
         end_time = time.time()
         print(f"Search completed in {end_time - start_time:.2f} seconds.")
     else:
-        st.error("Error during search. Please try again.")
+        error = response.json().get("detail", "Unknown error")
+        #st.error("Error during search. Please try again.")
+        st.error(f"Error: {error}")
